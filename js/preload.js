@@ -23,9 +23,10 @@ preload.prototype = {
                 this.game.load.audio(sounds[i], ['res/sounds/' + sounds[i] + '.mp3','res/sounds/' + sounds[i] + '.ogg']);
             }
 
-	    this.game.load.image("click_me","res/click_me.png");
-	    this.game.load.image("game_title","res/game_title.png");
-	    this.game.load.image("main_title","res/main_title.png");
+            var images = ["menu","click_me","game_title","main_title"]
+            for(var i = 0; i < images.length;i++){
+       	        this.game.load.image(images[i],"res/" + images[i] + ".png");
+            }
 
 	},
   	create: function(){
