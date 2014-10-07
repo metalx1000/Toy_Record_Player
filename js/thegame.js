@@ -15,10 +15,11 @@ theGame.prototype = {
         },
 
         load_records: function(){
+            rec = [];
             for(var i = 0 ;i<records.length;i++){
-                var record = this.game.add.button(0,128 * i + 256,records[i] + "_img",this.play,this);
-                record.song = song[i];
-                record.anchor.setTo(0.5,0.5);
+                rec.push(this.game.add.button(0,128 * i + 256,records[i] + "_img",this.play,this));
+                rec[i].song = song[i];
+                rec[i].anchor.setTo(0.5,0.5);
             }
         },
 
@@ -31,8 +32,9 @@ theGame.prototype = {
 
         stop: function(){
             for(var i = 0 ;i<records.length;i++){
+                tween = this.game.add.tween(rec[i]).to({ x: 0, y: 128 * i + 256 }, 1000);
+                tween.start();
                 song[i].stop();
             }
-
         }
 }
