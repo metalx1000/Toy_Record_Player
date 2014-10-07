@@ -3,16 +3,25 @@ var theGame = function(game){
 
 theGame.prototype = {
   	create: function(){
-            var click_me = this.game.add.button(this.game.world.width * 0.9,this.game.world.height * 0.1,"menu",this.menu,this);
-	    click_me.anchor.setTo(0.5,0.5);
+            var menu = this.game.add.button(this.game.world.width * 0.9,this.game.world.height * 0.1,"menu",this.menu,this);
+	    menu.anchor.setTo(0.5,0.5);
+        
+            this.load_records();
 	},
-        clickMe: function(){
-            click.play();
-            //tween = this.game.add.tween(player).to({ x: this.game.world.width + 500 }, 1000);
-            //tween.start();           
-        },
         menu: function(){
             click.play();
             this.game.state.start("GameTitle");
         },
+
+        load_records: function(){
+            for(var i = 0 ;i<records.length;i++){
+                var record = this.game.add.button(0,128 * i + 256,records[i] + "_img",this.play,this);
+                record.anchor.setTo(0.5,0.5);
+            }
+        },
+
+        play: function(record){
+            tween = this.game.add.tween(record).to({ x: this.game.world.width * 0.5, y: this.game.world.height * 0.5 }, 1000);
+            tween.start();
+        }
 }
