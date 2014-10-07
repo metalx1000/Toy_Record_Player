@@ -28,6 +28,12 @@ preload.prototype = {
        	        this.game.load.image(images[i],"res/" + images[i] + ".png");
             }
 
+            var records = ["little_star","doggie"]
+            for(var i = 0; i < records.length;i++){
+       	        this.game.load.image(records[i]+"_img","res/records/" + records[i] + "/record.png");
+                this.game.load.audio(records[i]+"_music", ['res/records/' + records[i] + '/music.mp3','res/records/' + records[i] + '/music.ogg'])
+            }
+
 	},
   	create: function(){
                 this.game.stage.backgroundColor = '#DDDDDD';
