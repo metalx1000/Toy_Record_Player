@@ -8,6 +8,14 @@ theGame.prototype = {
         
             this.load_records();
 	},
+        update: function(){
+            for(var i = 0 ;i<records.length;i++){
+                if(rec[i].active == true){
+                    rec[i].rotation += 0.01;
+                }
+            }
+            
+        },
         menu: function(callback){
             this.stop();
             click.play();
@@ -18,6 +26,7 @@ theGame.prototype = {
             rec = [];
             for(var i = 0 ;i<records.length;i++){
                 rec.push(this.game.add.button(0,128 * i + 256,records[i] + "_img",this.play,this));
+                rec[i].active = false;
                 rec[i].song = song[i];
                 rec[i].anchor.setTo(0.5,0.5);
             }
@@ -25,6 +34,7 @@ theGame.prototype = {
 
         play: function(record){
             this.stop();
+            record.active = true;
             record.song.play();
             tween = this.game.add.tween(record).to({ x: this.game.world.width * 0.5, y: this.game.world.height * 0.5 }, 1000);
             tween.start();
@@ -32,6 +42,7 @@ theGame.prototype = {
 
         stop: function(){
             for(var i = 0 ;i<records.length;i++){
+                rec[i].active = false;
                 tween = this.game.add.tween(rec[i]).to({ x: 0, y: 128 * i + 256 }, 1000);
                 tween.start();
                 song[i].stop();
