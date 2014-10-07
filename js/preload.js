@@ -33,7 +33,6 @@ preload.prototype = {
                 this.game.stage.backgroundColor = '#DDDDDD';
                 click = this.game.add.audio("click");
                 crackle = this.game.add.audio("vinyl_crackle");
-                crackle.play('',0,0.5,false);
 	},
 
         loadComplete: function(){

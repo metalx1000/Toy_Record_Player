@@ -2,6 +2,7 @@ var gameTitle = function(game){}
 
 gameTitle.prototype = {
   	create: function(){
+                crackle.play('',0,1,false);
                 this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		var gameTitle = this.game.add.sprite(this.game.world.width * 0.5,this.game.world.height * .1,"game_title");
 		gameTitle.anchor.setTo(0.5,0.5);
