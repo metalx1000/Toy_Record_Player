@@ -8,7 +8,8 @@ theGame.prototype = {
         
             this.load_records();
 	},
-        menu: function(){
+        menu: function(callback){
+            this.stop();
             click.play();
             this.game.state.start("GameTitle");
         },
@@ -22,8 +23,16 @@ theGame.prototype = {
         },
 
         play: function(record){
+            this.stop();
             record.song.play();
             tween = this.game.add.tween(record).to({ x: this.game.world.width * 0.5, y: this.game.world.height * 0.5 }, 1000);
             tween.start();
+        },
+
+        stop: function(){
+            for(var i = 0 ;i<records.length;i++){
+                song[i].stop();
+            }
+
         }
 }
