@@ -23,7 +23,7 @@ preload.prototype = {
                 this.game.load.audio(sounds[i], ['res/sounds/' + sounds[i] + '.mp3','res/sounds/' + sounds[i] + '.ogg']);
             }
 
-            var images = ["menu","click_me","game_title","main_title"]
+            var images = ["menu","click_me","game_title","main_title","info"]
             for(var i = 0; i < images.length;i++){
        	        this.game.load.image(images[i],"res/" + images[i] + ".png");
             }
@@ -55,7 +55,7 @@ preload.prototype = {
 
         //  This callback is sent the following parameters:
         fileComplete: function(progress, cacheKey, success, totalLoaded, totalFiles) {
-            console.log("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
+            //console.log("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
             load_text.setText("File Complete: " + progress + "% - " + totalLoaded + " out of " + totalFiles);
         }
 
