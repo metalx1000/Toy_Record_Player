@@ -28,7 +28,7 @@ preload.prototype = {
        	        this.game.load.image(images[i],"res/" + images[i] + ".png");
             }
 
-            records = ["little_star","doggie","bingo","jesus_loves_me"];
+            records = ["little_star","doggie","bingo","jesus_loves_me","little_lite"];
             song = [];
             for(var i = 0; i < records.length;i++){
        	        this.game.load.image(records[i]+"_img","res/records/" + records[i] + "/record.png");

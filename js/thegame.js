@@ -26,11 +26,13 @@ theGame.prototype = {
         load_records: function(){
             rec = [];
             for(var i = 0 ;i<records.length;i++){
-                rec.push(this.game.add.button(0,128 * i + 256,records[i] + "_img",this.play,this));
+                var y = this.game.world.height / records.length; 
+                rec.push(this.game.add.button(0, y * i + y,records[i] + "_img",this.play,this));
                 rec[i].scale.setTo(rec_scale,rec_scale);
                 rec[i].active = false;
                 rec[i].song = song[i];
                 rec[i].anchor.setTo(0.5,0.5);
+                rec[i].dy = y * i + y;
             }
         },
 
@@ -47,7 +49,7 @@ theGame.prototype = {
         stop: function(){
             for(var i = 0 ;i<records.length;i++){
                 rec[i].active = false;
-                tweenp = this.game.add.tween(rec[i]).to({ x: 0, y: 128 * i + 256 }, 1000);
+                tweenp = this.game.add.tween(rec[i]).to({ x: 0, y: rec[i].dy }, 1000);
                 tweens = this.game.add.tween(rec[i].scale).to({ x: rec_scale, y: rec_scale }, 1000);
                 tweens.start();
                 tweenp.start();
