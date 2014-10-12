@@ -3,9 +3,10 @@ var theGame = function(game){
 
 theGame.prototype = {
   	create: function(){
-            var menu = this.game.add.button(this.game.world.width * 0.9,this.game.world.height * 0.1,"menu",this.menu,this);
-	    menu.anchor.setTo(0.5,0.5);
- 
+
+            var menu = this.create_button(this.game.world.width * 0.9,this.game.world.height * .1,1,"menu","GameTitle");
+            var info = this.create_button(this.game.world.width * 0.9,this.game.world.height * .2,.5,"info","info");
+
             rec_scale = 0.7;       
             this.load_records();
 	},
@@ -55,5 +56,22 @@ theGame.prototype = {
                 tweenp.start();
                 song[i].stop();
             }
-        }
+        },
+        create_button: function(x,y,scale,img,state){
+            var btn = this.game.add.button(x,y,img,this.change_state,this);
+            btn.state = state;
+            btn.scale.setTo(scale,scale);
+            btn.anchor.setTo(0.5,0.5);
+            btn.events.onInputOver.add(function(_this){
+                var tween = _this.game.add.tween(_this.scale)
+                    .to({ x: scale * 1.5, y: scale * 1.5 }, 200)
+                    .to({ x: scale, y: scale }, 400)
+                    .start();
+            });
+        },
+        change_state: function(_this){
+            click.play();
+            this.game.state.start(_this.state);
+        },
+
 }
